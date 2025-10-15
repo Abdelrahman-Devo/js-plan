@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خطة تعلم JavaScript | Devo</title>
+  <style>
+    :root {
+      --main: #007bff;
+      --bg: #ffffff;
+      --text: #222;
+      --card: #f3f4f6;
+      --dark-bg: #0f172a;
+      --dark-text: #f1f5f9;
+      --dark-card: #1e293b;
+      --accent: #61dafb;
+    }
+    [data-theme="dark"] {
+      --bg: var(--dark-bg);
+      --text: var(--dark-text);
+      --card: var(--dark-card);
+    }
+    body {
+      font-family: "Cairo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: var(--main);
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .top-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px;
+    }
+    .top-buttons button {
+      background: var(--main);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .top-buttons button:hover { background: #005fd4; }
+    .plan {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .week {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .week:hover { transform: translateY(-5px); }
+    .week h2 {
+      color: var(--main);
+      margin-top: 0;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .task {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .task input {
+      margin-left: 10px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    /* 📅 التقويم */
+    .calendar {
+      padding: 20px;
+      text-align: center;
+    }
+    .calendar h2 {
+      color: var(--main);
+      margin-bottom: 15px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      max-width: 400px;
+      margin: 0 auto 15px;
+    }
+    .day {
+      background: var(--card);
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+    .day.active {
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+    }
+    .day:hover {
+      transform: scale(1.05);
+    }
+    #progressBtn {
+      background: var(--main);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #progressBtn:hover {
+      background: #005fd4;
+      transform: scale(1.05);
+    }
+    @media (max-width: 600px) {
+      header { font-size: 1.2rem; }
+      .week h2 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>⚡ خطة تعلم JavaScript – Devo</header>
+
+  <div class="top-buttons">
+    <button id="langToggle">🌐 English</button>
+    <button id="themeToggle">🌙 الوضع الداكن</button>
+    <button id="downloadBtn">💾 تحميل PDF</button>
+  </div>
+
+  <div class="plan" id="plan">
+    <div class="week">
+      <h2>الأسبوع 1: الأساسيات</h2>
+      <div class="task"><input type="checkbox"> ما هي JavaScript وكيف تعمل</div>
+      <div class="task"><input type="checkbox"> المتغيرات وأنواع البيانات</div>
+      <div class="task"><input type="checkbox"> العمليات الحسابية والمنطقية</div>
+      <div class="task"><input type="checkbox"> الجمل الشرطية</div>
+      <div class="task"><input type="checkbox"> الحلقات (for / while)</div>
+      <div class="task"><input type="checkbox"> الدوال (Functions)</div>
+      <div class="task"><input type="checkbox"> مشروع: آلة حاسبة</div>
+    </div>
+    <div class="week">
+      <h2>الأسبوع 2: التفاعل والتخزين</h2>
+      <div class="task"><input type="checkbox"> DOM وquerySelector</div>
+      <div class="task"><input type="checkbox"> التعامل مع الأحداث</div>
+      <div class="task"><input type="checkbox"> إنشاء عناصر ديناميكية</div>
+      <div class="task"><input type="checkbox"> LocalStorage وJSON</div>
+      <div class="task"><input type="checkbox"> مشروع: قائمة مهام</div>
+    </div>
+    <div class="week">
+      <h2>الأسبوع 3: API والمشروع النهائي</h2>
+      <div class="task"><input type="checkbox"> fetch() و async/await</div>
+      <div class="task"><input type="checkbox"> التعامل مع الأخطاء</div>
+      <div class="task"><input type="checkbox"> استخدام API مجاني</div>
+      <div class="task"><input type="checkbox"> مشروع نهائي: تطبيق الطقس</div>
+      <div class="task"><input type="checkbox"> رفع المشروع على GitHub</div>
+    </div>
+  </div>
+
+  <div class="calendar">
+    <h2>📅 سجل الأيام التي درست فيها</h2>
+    <div class="calendar-grid" id="calendarGrid"></div>
+    <button id="progressBtn">📊 عرض نسبة الإنجاز</button>
+  </div>
+
+  <footer>© 2025 Devo – JavaScript Learning Plan</footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const langToggle = document.getElementById("langToggle");
+      const themeToggle = document.getElementById("themeToggle");
+      const checkboxes = document.querySelectorAll("input[type='checkbox']");
+      const downloadBtn = document.getElementById("downloadBtn");
+      const calendarGrid = document.getElementById("calendarGrid");
+      const progressBtn = document.getElementById("progressBtn");
+
+      /* 🌙 الوضع الداكن */
+      let theme = localStorage.getItem("theme") || "light";
+      document.body.setAttribute("data-theme", theme);
+      themeToggle.textContent = theme === "dark" ? "☀️ الوضع الفاتح" : "🌙 الوضع الداكن";
+
+      themeToggle.addEventListener("click", () => {
+        theme = theme === "dark" ? "light" : "dark";
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+        themeToggle.textContent = theme === "dark" ? "☀️ الوضع الفاتح" : "🌙 الوضع الداكن";
+      });
+
+      /* 🌐 اللغة */
+      let lang = localStorage.getItem("lang") || "ar";
+      langToggle.textContent = lang === "ar" ? "🌐 English" : "🌐 العربية";
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
+
+      langToggle.addEventListener("click", () => {
+        lang = lang === "ar" ? "en" : "ar";
+        localStorage.setItem("lang", lang);
+        document.body.dir = lang === "ar" ? "rtl" : "ltr";
+        langToggle.textContent = lang === "ar" ? "🌐 English" : "🌐 العربية";
+        alert(lang === "ar" ? "تم التحويل إلى العربية" : "Language switched to English");
+      });
+
+      /* ✅ حفظ المهام */
+      checkboxes.forEach((cb, i) => {
+        const saved = localStorage.getItem("task" + i);
+        if (saved === "true") cb.checked = true;
+        cb.addEventListener("change", () => {
+          localStorage.setItem("task" + i, cb.checked);
+        });
+      });
+
+      /* 💾 زر التحميل */
+      downloadBtn.addEventListener("click", () => {
+        alert("📄 ميزة تحميل PDF ستُضاف لاحقًا!");
+      });
+
+      /* 📅 التقويم */
+      const days = ["أحد","إثنين","ثلاثاء","أربعاء","خميس","جمعة","سبت"];
+      for (let i = 0; i < 14; i++) {
+        const day = document.createElement("div");
+        day.className = "day";
+        day.textContent = days[i % 7];
+        if (localStorage.getItem("day" + i) === "true") {
+          day.classList.add("active");
+        }
+        day.addEventListener("click", () => {
+          const active = day.classList.toggle("active");
+          localStorage.setItem("day" + i, active);
+        });
+        calendarGrid.appendChild(day);
+      }
+
+      /* 📊 زر عرض التقدّم */
+      progressBtn.addEventListener("click", () => {
+        const allDays = document.querySelectorAll(".day");
+        const activeDays = document.querySelectorAll(".day.active");
+        const percent = Math.round((activeDays.length / allDays.length) * 100);
+        localStorage.setItem("progress", percent);
+        alert(`📈 لقد أكملت ${percent}% من أيام الدراسة!`);
+      });
+    });
+  </script>
+</body>
+</html>
